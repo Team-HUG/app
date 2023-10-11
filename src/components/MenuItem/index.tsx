@@ -31,7 +31,7 @@ const MenuItem = ({ data }: { data: MenusTypes }) => {
         )
       }
     >
-      <img src={data.imageUrl} alt="사진" />
+      <S.ViewImgBox img_url={data.imageUrl} />
       <span>{data.foodName}</span>
       <span>{data.price}</span>
     </S.MenuItemBox>

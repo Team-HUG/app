@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { headerData } from '../../assets/headerData';
+import { instance } from '../../api';
 import { OrderName } from '../../atoms/atom';
 import * as S from './style';
 
 const OderHeader = () => {
   const [orderName, setOrderName] = useRecoilState(OrderName);
+  const [headerData, setHeaderData] = useState<{ category: string[] }>();
+
+  useEffect(() => {
+    const fetchCategory = async () => {
+      const { data: category } = await instance.get('/api/food/category/list');
+      setHeaderData(category);
+    };
+
+    fetchCategory();
+  }, []);
 
   return (
     <div
@@ -15,14 +25,9 @@ const OderHeader = () => {
       }}
     >
       <S.OrderHeaderContainer>
-        {headerData.map((data) => (
-          <S.OrderHeaderItemBox
-            key={data.id}
-            current={data.name}
-            clicked={orderName}
-            onClick={() => setOrderName(data.name)}
-          >
-            {data.name}
+        {headerData?.category.map((data, idx) => (
+          <S.OrderHeaderItemBox key={idx} current={data} clicked={orderName} onClick={() => setOrderName(data)}>
+            {data}
           </S.OrderHeaderItemBox>
         ))}
         <S.AnotherButtonContainer>
