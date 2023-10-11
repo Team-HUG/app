@@ -41,7 +41,7 @@ const ShoppingBasket = () => {
           <OrderedList key={order.name} {...order} />
         ))}
       </div>
-      <footer className="w-full pb-10">
+      <footer className="w-full pb-20">
         <div className="flex justify-between items-end">
           <div className="font-medium text-[23px]">
             총 {shoppingList.length}가지{' '}
