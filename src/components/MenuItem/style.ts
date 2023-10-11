@@ -5,14 +5,6 @@ export const MenuItemBox = styled.div`
   flex-direction: column;
   align-items: center;
 
-  img {
-    width: 15rem;
-    height: 10rem;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
   span {
     border: none;
 
@@ -26,4 +18,13 @@ export const MenuItemBox = styled.div`
       font-weight: 400;
     }
   }
+`;
+
+export const ViewImgBox = styled.div<{ img_url: string }>`
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(${({ img_url }) => img_url});
+  background-size: contain;
+  width: 15rem;
+  height: 10rem;
 `;
