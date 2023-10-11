@@ -6,11 +6,6 @@ export const MenuContainer = styled.div`
   align-items: flex-start;
   margin-left: 7rem;
   margin-top: 5.6rem;
-  overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `;
 
 export const MenuCategoryTitle = styled.span`
@@ -29,4 +24,9 @@ export const MenuListContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 38px;
   margin-top: 1rem;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;

@@ -26,7 +26,6 @@ const CardGame = () => {
       setTimeout(() => {
         setStartCount((prev) => prev - 1);
       }, 1000);
-      console.log('dksdlkk');
     } else if (startCount === 10) return;
 
     if (startCount === 0) {
