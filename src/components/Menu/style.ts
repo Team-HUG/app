@@ -6,6 +6,11 @@ export const MenuContainer = styled.div`
   align-items: flex-start;
   margin-left: 7rem;
   margin-top: 5.6rem;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const MenuCategoryTitle = styled.span`
