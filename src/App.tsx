@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import CardGamePage from './pages/CardGamePage';
 import OrderPage from './pages/OrderPage';
 import Prepare from './pages/Prepare';
 import AdminOrderList from './pages/AdminOrderList';
@@ -15,10 +16,11 @@ const App = () => {
       <StyledToastify autoClose={1000} position={toast.POSITION.TOP_RIGHT} />
       <Modal />
       <Routes>
+        <Route path="/" element={<Main />} />
         <Route path="/order" element={<OrderPage />} />
+        <Route path="/card-game" element={<CardGamePage />} />
         <Route path="/admin/order-list" element={<AdminOrderList />} />
         <Route path="/admin/game-list" element={<AdminGameList />} />
-        <Route path="/" element={<Main />} />
         <Route path="/prepare" element={<Prepare />} />
       </Routes>
     </BrowserRouter>
