@@ -14,7 +14,7 @@ const OrderPage = () => {
       {!isOpenShoppingList && (
         <div
           onClick={() => setIsOpenShoppingList(!isOpenShoppingList)}
-          className=" w-12 h-24 cursor-pointer rounded-s-xl bg-orange1 fixed right-0 top-1/2 flex justify-center items-center"
+          className="w-12 h-24 cursor-pointer rounded-s-xl bg-orange1 fixed right-0 top-1/2 flex justify-center items-center"
         >
           <ArrowCloseIcon />
         </div>
@@ -29,7 +29,7 @@ const OrderPage = () => {
           >
             <ArrowOpenIcon />
           </div>
-          <ShoppingBasket />
+          <ShoppingBasket setIsOpenShoppingList={setIsOpenShoppingList} />
         </div>
       )}
     </S.OrderPageContainer>

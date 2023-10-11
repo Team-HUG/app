@@ -1,13 +1,13 @@
 import shoppingStore from '../store/shopping.store';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 
-const ShoppingBasket = () => {
+const ShoppingBasket = ({ setIsOpenShoppingList }: any) => {
   const [shoppingList] = useRecoilState(shoppingStore);
 
   return (
     <div className="flex flex-col bg-white items-center justify-between w-[500px] mx-auto h-screen rounded-[10px] shadow-[0_4px_9px_0px_rgba(0,0,0,0.15)] px-10">
       <header className="text-[35px] pt-10 font-semiBold text-gray4">장바구니</header>
-      <div className="flex flex-col gap-[35px] w-full max-h-[60%] overflow-scroll py-5">
+      <div className="flex flex-col gap-[35px] w-full h-[60%] overflow-scroll py-5">
         {shoppingList.map((order) => (
           <OrderedList key={order.name} {...order} />
         ))}
@@ -36,7 +36,10 @@ const ShoppingBasket = () => {
           </div>
         </div>
         <div className="flex justify-between w-full gap-[5%]">
-          <button className="w-[30%] h-[70px] text-[26px] font-semiBold text-white rounded-[10px] bg-gray2">
+          <button
+            className="w-[30%] h-[70px] text-[26px] font-semiBold text-white rounded-[10px] bg-gray2"
+            onClick={() => setIsOpenShoppingList(false)}
+          >
             닫기
           </button>
           <button className="w-[70%] h-[70px] text-[26px] font-semiBold text-white rounded-[10px] bg-orange1">
