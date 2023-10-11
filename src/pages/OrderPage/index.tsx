@@ -1,38 +1,42 @@
-import { useState } from 'react';
-import ArrowOpenIcon from '../../assets/ArrowOpenIcon';
 import Menu from '../../components/Menu';
 import OderHeader from '../../components/OrderHeader';
 import * as S from './style';
 import ArrowCloseIcon from '../../assets/ArrowCloseIcon';
 import ShoppingBasket from '../../components/ShoppingBasket';
+import TableBar from '../../components/atoms/TableBar';
+import { useRecoilState } from 'recoil';
+import isOpenStore from '../../store/isOpen.store';
 
 const OrderPage = () => {
-  const [isOpenShoppingList, setIsOpenShoppingList] = useState(false);
+  const [isOpen, setIsOpen] = useRecoilState(isOpenStore);
 
   return (
-    <S.OrderPageContainer>
-      {!isOpenShoppingList && (
-        <div
-          onClick={() => setIsOpenShoppingList(!isOpenShoppingList)}
-          className="w-12 h-24 cursor-pointer rounded-s-xl bg-orange1 fixed right-0 top-1/2 flex justify-center items-center"
-        >
-          <ArrowCloseIcon />
-        </div>
-      )}
-      <OderHeader />
-      <Menu />
-      {isOpenShoppingList && (
-        <div className=" fixed cursor-pointer flex right-0 items-center">
+    <div>
+      <TableBar name="주문" />
+      <S.OrderPageContainer>
+        {!isOpen && (
           <div
-            onClick={() => setIsOpenShoppingList(!isOpenShoppingList)}
-            className=" w-12 h-24 rounded-s-xl bg-orange1 fixed right-[500px] top-1/2 flex justify-center items-center"
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-12 h-24 cursor-pointer rounded-s-xl bg-orange1 fixed right-0 top-1/2 flex justify-center items-center"
           >
-            <ArrowOpenIcon />
+            <ArrowCloseIcon />
           </div>
-          <ShoppingBasket setIsOpenShoppingList={setIsOpenShoppingList} />
-        </div>
-      )}
-    </S.OrderPageContainer>
+        )}
+        <OderHeader />
+        <Menu />
+        {isOpen && (
+          <div className=" fixed cursor-pointer flex right-0 items-center">
+            <div
+              onClick={() => setIsOpen(!isOpen)}
+              className=" w-12 h-24 cursor-pointer rounded-s-xl bg-orange1 fixed right-0 top-1/2 flex justify-center items-center"
+            >
+              <ArrowCloseIcon />
+            </div>
+            <ShoppingBasket />
+          </div>
+        )}
+      </S.OrderPageContainer>
+    </div>
   );
 };
 

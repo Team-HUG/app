@@ -6,6 +6,7 @@ import MenuItem from '../MenuItem';
 import { instance } from '../../api';
 
 export interface MenusTypes {
+  id: number;
   category: string;
   foodName: string;
   imageUrl: string;
@@ -18,8 +19,9 @@ const Menu = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const { data: categorys } = await instance.get('/api/food/category/list');
-      const filterdCategory = categorys.category.filter((category: any) => category === orderName);
+      console.log(1);
+      const { data: categories } = await instance.get('/api/food/category/list');
+      const filterdCategory = categories.category.filter((category: any) => category === orderName);
       const { data } = await instance.get(`/api/food/list?category=${filterdCategory}`);
       setDatas(data);
     };

@@ -1,8 +1,37 @@
+import { instance } from '../api';
+import useModal from '../hooks/useModal';
+import isOpenStore from '../store/isOpen.store';
 import shoppingStore from '../store/shopping.store';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 
-const ShoppingBasket = ({ setIsOpenShoppingList }: any) => {
-  const [shoppingList] = useRecoilState(shoppingStore);
+const ShoppingBasket = () => {
+  const [shoppingList, setShoppingList] = useRecoilState(shoppingStore);
+  const { openModal, closeModal } = useModal();
+  const [isOpen, setIsOpen] = useRecoilState(isOpenStore);
+
+  const onPaymentClick = async () => {
+    shoppingList.map(async (item) => {
+      await instance.post('/api/cart/food/add', {
+        foodId: item.id,
+        quantity: item.count,
+      });
+    });
+
+    openModal({
+      component: (
+        <div className=" w-96 h-32 border-2 rounded-md border-white flex justify-center items-center">
+          <span className=" font-bold text-lg text-white text-center">
+            주문이 정상적으로 처리되었습니다 !<br />
+            필요하신게 있다면 직원을 호출해주세요.
+          </span>
+        </div>
+      ),
+    });
+    setShoppingList([]);
+    setTimeout(() => {
+      closeModal();
+    }, 2000);
+  };
 
   return (
     <div className="flex flex-col bg-white items-center justify-between w-[500px] mx-auto h-screen rounded-[10px] shadow-[0_4px_9px_0px_rgba(0,0,0,0.15)] px-10">
@@ -38,11 +67,14 @@ const ShoppingBasket = ({ setIsOpenShoppingList }: any) => {
         <div className="flex justify-between w-full gap-[5%]">
           <button
             className="w-[30%] h-[70px] text-[26px] font-semiBold text-white rounded-[10px] bg-gray2"
-            onClick={() => setIsOpenShoppingList(false)}
+            onClick={() => setIsOpen(false)}
           >
             닫기
           </button>
-          <button className="w-[70%] h-[70px] text-[26px] font-semiBold text-white rounded-[10px] bg-orange1">
+          <button
+            onClick={onPaymentClick}
+            className="w-[70%] h-[70px] text-[26px] font-semiBold text-white rounded-[10px] bg-orange1"
+          >
             결제하기
           </button>
         </div>
@@ -76,6 +108,7 @@ const OrderedList = ({ name, count, price }: { name: string; count: number; pric
               prev.map((x) => {
                 if (x.name === name && x.count > 1)
                   return {
+                    id: x.id,
                     name: x.name,
                     price: x.price,
                     count: x.count - 1,
@@ -95,6 +128,7 @@ const OrderedList = ({ name, count, price }: { name: string; count: number; pric
               prev.map((x) => {
                 if (x.name === name && x.count < 20)
                   return {
+                    id: x.id,
                     name: x.name,
                     price: x.price,
                     count: x.count + 1,
