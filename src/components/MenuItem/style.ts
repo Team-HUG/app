@@ -4,6 +4,7 @@ export const MenuItemBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 
   img {
     width: 15rem;
