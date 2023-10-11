@@ -26,7 +26,7 @@ const Menu = () => {
     };
 
     fetch();
-  }, []);
+  }, [orderName]);
 
   console.log(datas);
 
