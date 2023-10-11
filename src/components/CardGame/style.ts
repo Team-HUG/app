@@ -143,7 +143,7 @@ export const CardGameTitleBox = styled.div`
 
 export const CardsBox = styled.div`
   position: absolute;
-  top: 28%;
+  top: 30%;
   left: 50%;
   transform: translateX(-50%);
   display: grid;
@@ -153,7 +153,7 @@ export const CardsBox = styled.div`
 
   img {
     width: 12rem;
-    height: 17rem;
+    height: 15rem;
     border-radius: 10px;
     box-shadow: 8px 5px 10px rgba(0, 0, 0, 0.1);
   }
