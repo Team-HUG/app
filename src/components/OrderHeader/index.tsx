@@ -31,7 +31,6 @@ const OderHeader = () => {
           </S.OrderHeaderItemBox>
         ))}
         <S.AnotherButtonContainer>
-          <S.CartButton>장바구니</S.CartButton>
           <S.EmployeeButton>직원호출</S.EmployeeButton>
         </S.AnotherButtonContainer>
       </S.OrderHeaderContainer>

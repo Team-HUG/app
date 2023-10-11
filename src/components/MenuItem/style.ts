@@ -4,6 +4,7 @@ export const MenuItemBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 
   span {
     border: none;
