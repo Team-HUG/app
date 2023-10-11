@@ -30,9 +30,9 @@ const OderHeader = () => {
             {data}
           </S.OrderHeaderItemBox>
         ))}
-        <S.AnotherButtonContainer>
+        {/* <S.AnotherButtonContainer>
           <S.EmployeeButton>직원호출</S.EmployeeButton>
-        </S.AnotherButtonContainer>
+        </S.AnotherButtonContainer> */}
       </S.OrderHeaderContainer>
     </div>
   );

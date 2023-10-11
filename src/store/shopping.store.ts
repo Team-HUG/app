@@ -1,6 +1,7 @@
 import { atom } from 'recoil';
 
 interface IShopping {
+  id: number;
   name: string;
   price: number;
   count: number;
@@ -8,11 +9,7 @@ interface IShopping {
 
 const shoppingStore = atom<Array<IShopping>>({
   key: 'shoppingStore',
-  default: [
-    { name: '모짜렐라치즈카츠 (4pcs)', price: 12500, count: 1 },
-    { name: '이이이이이이이잉 (4pcs)', price: 99900, count: 1 },
-    { name: '꾜요요요요요요용 (4pcs)', price: 12500, count: 1 },
-  ],
+  default: [],
 });
 
 export default shoppingStore;
