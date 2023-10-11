@@ -20,15 +20,12 @@ const Menu = () => {
     const fetch = async () => {
       const { data: categorys } = await instance.get('/api/food/category/list');
       const filterdCategory = categorys.category.filter((category: any) => category === orderName);
-      console.log(filterdCategory);
       const { data } = await instance.get(`/api/food/list?category=${filterdCategory}`);
       setDatas(data);
     };
 
     fetch();
   }, [orderName]);
-
-  console.log(datas);
 
   return (
     <S.MenuContainer>
