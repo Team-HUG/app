@@ -32,6 +32,7 @@ export const AnotherButtonContainer = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 12rem;
+  margin-bottom: 1rem;
 `;
 
 export const CartButton = styled(OrderHeaderItemBox)`
