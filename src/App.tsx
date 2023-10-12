@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import Main from './pages/Main';
 import { ToastContainer, toast } from 'react-toastify';
 import Modal from './components/common/modal';
+import RecommendMenuPage from './pages/RecommendMenuPage';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/admin/order-list" element={<AdminOrderList />} />
         <Route path="/admin/game-list" element={<AdminGameList />} />
         <Route path="/prepare" element={<Prepare />} />
+        <Route path="/recommend" element={<RecommendMenuPage />} />
       </Routes>
     </BrowserRouter>
   );
