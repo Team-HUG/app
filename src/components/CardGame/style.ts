@@ -122,7 +122,7 @@ export const SuccessButtonBox = styled.div`
 export const CardGameContainer = styled.div``;
 
 export const CardGameTitleBox = styled.div`
-  margin-top: 3.8rem;
+  padding-top: 3.8rem;
   margin-left: 8rem;
   h1 {
     font-size: 2.8rem;
