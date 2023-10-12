@@ -5,6 +5,7 @@ import Prepare from './pages/Prepare';
 import AdminOrderList from './pages/AdminOrderList';
 import AdminGameList from './pages/AdminGameList';
 import FindWrongPicture from './pages/FindWrongPicture';
+import styled from 'styled-components';
 import Main from './pages/Main';
 import { ToastContainer, toast } from 'react-toastify';
 import Modal from './components/common/modal';
@@ -28,5 +29,7 @@ const App = () => {
     </BrowserRouter>
   );
 };
+
+const StyledToastify = styled(ToastContainer)``;
 
 export default App;
