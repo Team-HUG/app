@@ -5,7 +5,8 @@ export const ReocmmendResultPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 4rem 5rem;
+  margin: 0px 5rem 4rem 5rem;
+  padding-top: 4rem;
 `;
 
 export const RecommendResultMessageBox = styled.div`
@@ -47,7 +48,7 @@ export const ResultButtonBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   div {
     width: 12rem;
     height: 4rem;
