@@ -14,4 +14,6 @@ export const QuestionRecommendMessageBox = styled(LoadingMessageBox)`
   }
 `;
 
-export const QuestionRecommendButtonContainer = styled(SuccessButtonBox)``;
+export const QuestionRecommendButtonContainer = styled(SuccessButtonBox)`
+  position: absolute;
+`;
