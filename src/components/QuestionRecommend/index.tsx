@@ -9,7 +9,7 @@ const QuestionRecommend = ({ setIsStart }: any) => {
       <S.QuestionRecommendMessageBox>
         <img src="/Character.png" alt="우리의 마스코트" />
         <h1>
-          무엇을 먹어야 할 지 <span>고민</span> 되시나요?
+          무엇을 먹어야할지 <span>고민</span>이 되시나요?
         </h1>
         <span>AI가 고객님의 취향을 반영해 메뉴를 추천해 줍니다</span>
         <S.QuestionRecommendButtonContainer>

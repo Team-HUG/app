@@ -1,4 +1,9 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const spin = keyframes`
+   from { transform: rotate(0deg); }
+  to { transform: rotate(359deg); }
+`;
 
 export const RecommendLoadingContainer = styled.div`
   width: 100%;
@@ -32,4 +37,15 @@ export const LoadingMessageBox = styled.div`
     letter-spacing: -1px;
     margin-top: 1.2rem;
   }
+`;
+
+export const Loading = styled.div`
+  margin-top: 3rem;
+  width: 5rem;
+  height: 5rem;
+  border: 7px solid #ffffff;
+  border-right-color: #fb4f00;
+  border-top-color: #fb4f00;
+  border-radius: 100%;
+  animation: ${spin} 1000ms infinite linear;
 `;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { RecommendData } from '../../atoms/atom';
@@ -8,6 +8,10 @@ import * as S from './style';
 const RecommendResultPage = () => {
   const recommendData = useRecoilValue(RecommendData);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (recommendData[0].price === 0) return navigate('/recommend');
+  }, [recommendData, navigate]);
 
   return (
     <>
