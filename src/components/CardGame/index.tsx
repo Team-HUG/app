@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { cardData } from '../../assets/db/cardData';
 import * as S from './style';
 
 const CardGame = () => {
@@ -105,66 +106,23 @@ const CardGame = () => {
         <span>섞여있는 카드 속 두꺼비를 찾아내세요!</span>
       </S.CardGameTitleBox>
       <S.CardsBox>
-        {isGGwang || isSuccess ? (
-          <img src="/GGwangCard.png" alt="사진" />
-        ) : (
+        {cardData.map((card) => (
           <img
-            src="/BackJinroCard.png"
-            alt="사진"
+            key={card.id}
+            src={isGGwang || isSuccess ? card.img : '/BackJinroCard.png'}
+            alt="카드"
             onClick={() => {
-              if (notifyCount === 0) {
-                setIsGGwang(true);
+              if (!isGGwang || !isSuccess) {
                 setNotifyCount(1);
                 setStartCount(10);
+                if (card.isAnswer && notifyCount === 0) setIsSuccess(true);
+                else if (!card.isAnswer && notifyCount === 0) setIsGGwang(true);
+              } else {
+                return;
               }
             }}
           />
-        )}
-        {isGGwang || isSuccess ? (
-          <img src="/GGwangCard.png" alt="사진" />
-        ) : (
-          <img
-            src="/BackJinroCard.png"
-            alt="사진"
-            onClick={() => {
-              if (notifyCount === 0) {
-                setIsGGwang(true);
-                setNotifyCount(1);
-                setStartCount(10);
-              }
-            }}
-          />
-        )}
-        {isGGwang || isSuccess ? (
-          <img src="/GGwangCard.png" alt="사진" />
-        ) : (
-          <img
-            src="/BackJinroCard.png"
-            alt="사진"
-            onClick={() => {
-              if (notifyCount === 0) {
-                setIsGGwang(true);
-                setNotifyCount(1);
-                setStartCount(10);
-              }
-            }}
-          />
-        )}
-        {isGGwang || isSuccess ? (
-          <img src="/SuccessJinro.png" alt="사진" />
-        ) : (
-          <img
-            src="/BackJinroCard.png"
-            alt="사진"
-            onClick={() => {
-              if (notifyCount === 0) {
-                setIsSuccess(true);
-                setNotifyCount(1);
-                setStartCount(10);
-              }
-            }}
-          />
-        )}
+        ))}
       </S.CardsBox>
     </S.CardGameContainer>
   );

@@ -82,7 +82,7 @@ export const BlackCoverSuccessMessageBox = styled.div`
 
     &:nth-of-type(2) {
       top: 50%;
-      font-size: 2.5rem;
+      font-size: 2.4rem;
     }
   }
 `;
