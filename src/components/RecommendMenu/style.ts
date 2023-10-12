@@ -9,12 +9,12 @@ export const RecommendMenuContainer = styled.div`
 export const RecommendMenuSelectContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 2rem 8rem 1rem 8rem;
+  margin: 2rem 8rem 2.3rem 8rem;
 `;
 
-export const RecommendQuestion = styled.h1`
-  font-size: 1.5rem;
-  font-weight: 500;
+export const RecommendQuestion = styled.div`
+  font-size: 1.45rem;
+  font-weight: 600;
   color: #000000;
   margin-bottom: 1.4rem;
   letter-spacing: -2px;
@@ -46,12 +46,30 @@ export const RecommendSelectBox = styled.div<{ current: string; clicked: string 
   cursor: pointer;
 `;
 
-export const RecommendButton = styled.button`
-  width: 13.5rem;
-  height: 4.5rem;
-  background-color: #fb3f00;
-  font-weight: 600;
-  font-size: 1.7rem;
-  border-radius: 10px;
-  color: #ffffff;
+export const RecommendMenuButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  div {
+    width: 14rem;
+    height: 4.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.6rem;
+    border-radius: 10px;
+
+    &:nth-of-type(1) {
+      background-color: #ffffff;
+      box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.1);
+      color: #191919;
+      margin-right: 3rem;
+    }
+
+    &:nth-of-type(2) {
+      background-color: #fb3f00;
+      color: #ffffff;
+    }
+  }
 `;
