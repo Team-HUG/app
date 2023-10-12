@@ -4,6 +4,9 @@ import isOpenStore from '../store/isOpen.store';
 import shoppingStore from '../store/shopping.store';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { IncludeEvent } from '../atoms/atom';
 
 interface CartList {
   cartId: 0;
@@ -22,8 +25,11 @@ const ShoppingBasket = () => {
   const { data } = useQuery(['cartlist'], async () => {
     return await instance.get<CartList[]>(`api/cart/food/list`);
   });
+  const navigate = useNavigate();
 
   const queryClient = useQueryClient();
+
+  const setIncludeEvent = useSetRecoilState(IncludeEvent);
 
   const { mutate } = useMutation(
     async () => {
@@ -43,6 +49,7 @@ const ShoppingBasket = () => {
         });
         setTimeout(() => {
           closeModal();
+          navigate('/prepare');
         }, 2000);
         queryClient.invalidateQueries(['cartlist']);
       },
@@ -50,7 +57,9 @@ const ShoppingBasket = () => {
   );
 
   const onPaymentClick = async () => {
+    if (data?.data.length === 0) return toast.warning('음식을 담아주세요');
     mutate();
+    if (data?.data.some((item) => item.isEvent === true)) setIncludeEvent(true);
   };
 
   return (

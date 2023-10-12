@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { instance } from '../../api';
 import { OrderName } from '../../atoms/atom';
@@ -7,6 +8,7 @@ import * as S from './style';
 const OderHeader = () => {
   const [orderName, setOrderName] = useRecoilState(OrderName);
   const [headerData, setHeaderData] = useState<{ category: string[] }>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategory = async () => {
@@ -31,6 +33,7 @@ const OderHeader = () => {
           </S.OrderHeaderItemBox>
         ))}
         <S.AnotherButtonContainer>
+          <S.ToRecommendButton onClick={() => navigate('/recommend')}>메뉴추천</S.ToRecommendButton>
           <S.EmployeeButton>직원호출</S.EmployeeButton>
         </S.AnotherButtonContainer>
       </S.OrderHeaderContainer>

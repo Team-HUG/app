@@ -15,3 +15,8 @@ export const RecommendData = atom({
     },
   ],
 });
+
+export const IncludeEvent = atom<boolean>({
+  key: 'IncludeEvent',
+  default: false,
+});

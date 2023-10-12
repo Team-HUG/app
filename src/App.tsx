@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Modal from './components/common/modal';
 import RecommendPage from './pages/RecommendPage';
 import RecommendResultPage from './pages/RecommendResultPage';
+import SelectGamePage from './pages/SelectGamePage';
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/admin/game-list" element={<AdminGameList />} />
         <Route path="/game/find-wrong" element={<FindWrongPicture />} />
         <Route path="/prepare" element={<Prepare />} />
+        <Route path="/select-game" element={<SelectGamePage />} />
         <Route path="/recommend" element={<RecommendPage />} />
         <Route path="/recommend-result" element={<RecommendResultPage />} />
       </Routes>
