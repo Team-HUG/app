@@ -11,7 +11,7 @@ const CardGame = () => {
   const [notifyCount, setNotifyCount] = useState<number>(1);
   const [isGGwang, setIsGGwang] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  let copyCardData = [...cardData];
+  const [copyCards, setCopyCards] = useState<{ id: number; img: string; isAnswer: boolean }[]>(cardData);
 
   const navigate = useNavigate();
 
@@ -49,7 +49,8 @@ const CardGame = () => {
   }, [notifyCount, beginning]);
 
   useEffect(() => {
-    copyCardData.sort(() => Math.random() - 0.5);
+    setCopyCards((prev) => prev.sort(() => Math.random() - 0.5));
+    console.log(copyCards);
   }, []);
 
   return (
@@ -111,25 +112,21 @@ const CardGame = () => {
         <span>섞여있는 카드 속 두꺼비를 찾아내세요!</span>
       </S.CardGameTitleBox>
       <S.CardsBox>
-        {copyCardData
-          .sort(() => Math.floor(0.5))
-          .map((card) => (
-            <img
-              key={card.id}
-              src={isGGwang || isSuccess ? card.img : '/BackJinroCard.png'}
-              alt="카드"
-              onClick={() => {
-                if (!isGGwang || !isSuccess) {
-                  setNotifyCount(1);
-                  setStartCount(10);
-                  if (card.isAnswer && notifyCount === 0) setIsSuccess(true);
-                  else if (!card.isAnswer && notifyCount === 0) setIsGGwang(true);
-                } else {
-                  return;
-                }
-              }}
-            />
-          ))}
+        {copyCards.map((card) => (
+          <img
+            key={card.id}
+            src={isGGwang || isSuccess ? card.img : '/BackJinroCard.png'}
+            alt="카드"
+            onClick={() => {
+              if (!isGGwang || !isSuccess) {
+                setNotifyCount(1);
+                setStartCount(10);
+                if (card.isAnswer && notifyCount === 0) setIsSuccess(true);
+                else if (!card.isAnswer && notifyCount === 0) setIsGGwang(true);
+              }
+            }}
+          />
+        ))}
       </S.CardsBox>
     </S.CardGameContainer>
   );
