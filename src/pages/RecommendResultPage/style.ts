@@ -47,7 +47,7 @@ export const ResultButtonBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  
   div {
     width: 12rem;
     height: 4rem;
