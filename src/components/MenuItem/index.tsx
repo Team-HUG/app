@@ -46,7 +46,7 @@ const MenuItem = ({ data }: { data: MenusTypes }) => {
         </div>
       )}
       <span>{data.foodName}</span>
-      <span>{`${data.price}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</span>
+      <span>{`${data.price}`.replace(/\B(?=(\d{3})+(?!\d))/g, ', ')}원</span>
     </S.MenuItemBox>
   );
 };
