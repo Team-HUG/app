@@ -4,7 +4,7 @@ import OrderPage from './pages/OrderPage';
 import Prepare from './pages/Prepare';
 import AdminOrderList from './pages/AdminOrderList';
 import AdminGameList from './pages/AdminGameList';
-import styled from 'styled-components';
+import FindWrongPicture from './pages/FindWrongPicture';
 import Main from './pages/Main';
 import { ToastContainer, toast } from 'react-toastify';
 import Modal from './components/common/modal';
@@ -21,13 +21,12 @@ const App = () => {
         <Route path="/card-game" element={<CardGamePage />} />
         <Route path="/admin/order-list" element={<AdminOrderList />} />
         <Route path="/admin/game-list" element={<AdminGameList />} />
+        <Route path="/game/find-wrong" element={<FindWrongPicture />} />
         <Route path="/prepare" element={<Prepare />} />
         <Route path="/recommend" element={<RecommendPage />} />
       </Routes>
     </BrowserRouter>
   );
 };
-
-const StyledToastify = styled(ToastContainer)``;
 
 export default App;
