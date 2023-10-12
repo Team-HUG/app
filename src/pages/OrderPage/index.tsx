@@ -12,7 +12,7 @@ const OrderPage = () => {
   const [isOpen, setIsOpen] = useRecoilState(isOpenStore);
 
   return (
-    <div>
+    <div className="w-full">
       <TableBar name="주문" />
       <S.OrderPageContainer>
         {!isOpen && (

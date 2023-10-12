@@ -4,11 +4,20 @@ import * as S from './style';
 import { useRecoilState } from 'recoil';
 import shoppingStore from '../../store/shopping.store';
 import { toast } from 'react-toastify';
+import useModal from '../../hooks/useModal';
+import MenuDetail from '../MenuDetail';
 
 const MenuItem = ({ data }: { data: MenusTypes }) => {
   const [shoppingList, setShoppingList] = useRecoilState(shoppingStore);
+  const { openModal, closeModal } = useModal();
 
-  const onMenuItemClick = () => {
+  const onMenuItemClick = (id: number) => {
+    openModal({
+      component: <MenuDetail id={id} />,
+    });
+  };
+
+  const a = () => {
     setShoppingList(
       shoppingList.map((x) => x.name).includes(data.foodName)
         ? shoppingList.map((x) =>
@@ -31,9 +40,8 @@ const MenuItem = ({ data }: { data: MenusTypes }) => {
     );
     toast.info(<h1>메뉴가 추가되었어요!</h1>);
   };
-
   return (
-    <S.MenuItemBox onClick={onMenuItemClick}>
+    <S.MenuItemBox onClick={() => onMenuItemClick(data.id)}>
       <S.ViewImgBox img_url={data.imageUrl} />
       {data.isEvent && (
         <div className=" absolute h-fit flex items-center gap-1 mr-44 mt-32">

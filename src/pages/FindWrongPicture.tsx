@@ -162,7 +162,7 @@ const FindWrongPicture = () => {
         </NotifyMessage>
       )}
 
-      <div className="px-20 h-full">
+      <div className="px-20 h-full pt-[30px]">
         <header>
           <div className="text-[40px] text-black font-bold noselect">
             다른 곳 <span className="text-orange1">3개를</span>
