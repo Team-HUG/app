@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import TableBar from '../../components/atoms/TableBar';
 import QuestionRecommend from '../../components/QuestionRecommend';
-import RecommendLoading from '../../components/RecommendLoading';
 import RecommendMenu from '../../components/RecommendMenu';
 
 const RecommendPage = () => {
   const [isStart, setIsStart] = useState(true);
-  const [isMenu, setIsMenu] = useState(false);
 
   return (
     <>

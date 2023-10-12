@@ -1,5 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useSetRecoilState } from 'recoil';
+import { instance } from '../../api';
+import { RecommendData } from '../../atoms/atom';
 import RecommendLoading from '../RecommendLoading';
 import * as S from './style';
 
@@ -17,11 +21,30 @@ const RecommendMenu = () => {
   const [stockText, setStockText] = useState('');
   const [temperatureText, setTemperatureText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const setRecommendData = useSetRecoilState(RecommendData);
+  const navigate = useNavigate();
 
-  const onGPT = () => {
+  const onGPT = async () => {
     if (recommendArr.some((recommend) => recommend.length === 0))
       return toast.warning('선호하는 것을 모두 선택해주세요');
     setIsLoading(true);
+
+    try {
+      const { data } = await instance.post('/api/food/recommend/food', {
+        taste: recommendArr[0],
+        texture: recommendArr[1],
+        staple: recommendArr[2],
+        temperature: recommendArr[3],
+      });
+
+      setRecommendData(data);
+      navigate('/recommend-result');
+      toast.success('추천 메뉴를 구했습니다');
+    } catch (e) {
+      toast.error('오류가 발생했습니다');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
