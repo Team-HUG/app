@@ -53,7 +53,7 @@ export const NotifyMessage = styled.div`
   background-color: rgba(251, 79, 0, 0.6);
   width: 100%;
   height: 15rem;
-  animation: ${leftToRight} 0.5s;
+  animation: ${leftToRight} 1s;
   display: flex;
   align-items: center;
   justify-content: center;

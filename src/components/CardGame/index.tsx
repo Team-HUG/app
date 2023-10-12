@@ -72,6 +72,7 @@ const CardGame = () => {
               <div onClick={() => navigate('/order')}>돌아가기</div>
               <div
                 onClick={() => {
+                  navigate('/prepare');
                   openModal({
                     component: (
                       <div className=" w-96 h-32 border-2 rounded-md border-white flex justify-center items-center">
