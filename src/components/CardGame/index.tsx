@@ -50,7 +50,6 @@ const CardGame = () => {
 
   useEffect(() => {
     setCopyCards((prev) => prev.sort(() => Math.random() - 0.5));
-    console.log(copyCards);
   }, []);
 
   return (
@@ -109,7 +108,7 @@ const CardGame = () => {
         <h1>
           카드를 선택해서 <span>에이스를</span> 찾으세요!
         </h1>
-        <span>섞여있는 카드 속 두꺼비를 찾아내세요!</span>
+        <span>뒤집혀 있는 카드 중 두꺼비를 찾아내세요!</span>
       </S.CardGameTitleBox>
       <S.CardsBox>
         {copyCards.map((card) => (

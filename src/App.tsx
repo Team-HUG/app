@@ -8,12 +8,12 @@ import styled from 'styled-components';
 import Main from './pages/Main';
 import { ToastContainer, toast } from 'react-toastify';
 import Modal from './components/common/modal';
-import RecommendMenuPage from './pages/RecommendMenuPage';
+import RecommendPage from './pages/RecommendPage';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <StyledToastify autoClose={1000} position={toast.POSITION.TOP_RIGHT} />
+      <StyledToastify autoClose={1000} position={toast.POSITION.TOP_RIGHT} theme="colored" />
       <Modal />
       <Routes>
         <Route path="/" element={<Main />} />
@@ -22,7 +22,7 @@ const App = () => {
         <Route path="/admin/order-list" element={<AdminOrderList />} />
         <Route path="/admin/game-list" element={<AdminGameList />} />
         <Route path="/prepare" element={<Prepare />} />
-        <Route path="/recommend" element={<RecommendMenuPage />} />
+        <Route path="/recommend" element={<RecommendPage />} />
       </Routes>
     </BrowserRouter>
   );

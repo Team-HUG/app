@@ -27,8 +27,9 @@ export const LoadingMessageBox = styled.div`
 
   span {
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 600;
     color: #000000;
     letter-spacing: -1px;
+    margin-top: 1.2rem;
   }
 `;
