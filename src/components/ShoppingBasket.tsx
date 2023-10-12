@@ -4,6 +4,7 @@ import isOpenStore from '../store/isOpen.store';
 import shoppingStore from '../store/shopping.store';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
 
 interface CartList {
   cartId: 0;
@@ -49,6 +50,21 @@ const ShoppingBasket = () => {
     },
   );
 
+  const navigate = useNavigate();
+
+  const { mutate: reset_cart } = useMutation(
+    async () => {
+      return await instance.delete('api/cart/delete');
+    },
+    {
+      onSuccess: () => {
+        setIsOpen(false);
+        navigate('/');
+        queryClient.invalidateQueries(['cartlist']);
+      },
+    },
+  );
+
   const onPaymentClick = async () => {
     mutate();
   };
@@ -86,7 +102,7 @@ const ShoppingBasket = () => {
         <div className="flex justify-between w-full gap-[5%]">
           <button
             className="w-[30%] h-[70px] text-[26px] font-semiBold text-white rounded-[10px] bg-gray2"
-            onClick={() => setIsOpen(false)}
+            onClick={() => reset_cart()}
           >
             초기화
           </button>
