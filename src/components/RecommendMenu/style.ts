@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const RecommendMenuPageContainer = styled.div`
+export const RecommendMenuContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
