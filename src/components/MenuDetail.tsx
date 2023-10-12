@@ -41,7 +41,7 @@ const MenuDetail = ({ id }: any) => {
       <div className="w-[40%] h-full flex flex-col justify-between text-right">
         <div className="h-[55%] text-gray5 text-[22px] font-regular">{data?.data.foodName}</div>
         <div className="text-gray5 text-[20px]">
-          합계 {(data?.data.price || 0 * count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
+          합계 {((data?.data.price || 0) * count).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원
         </div>
         <div className="flex justify-between">
           <button
