@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cardData } from '../../assets/db/cardData';
 import * as S from './style';
+import useModal from '../../hooks/useModal';
 
 const CardGame = () => {
   const [beginning, setBeginning] = useState<boolean>(true); // 처음인가? (검은화면을 보여줘야 되는가)
@@ -14,6 +15,7 @@ const CardGame = () => {
   const [copyCards, setCopyCards] = useState<{ id: number; img: string; isAnswer: boolean }[]>(cardData);
 
   const navigate = useNavigate();
+  const { openModal, closeModal } = useModal();
 
   const clickedBlackCover = () => {
     if (isClicked) return;
@@ -68,7 +70,26 @@ const CardGame = () => {
             <h1>진로가 주는 서비스를 받아가세요!</h1>
             <S.SuccessButtonBox>
               <div onClick={() => navigate('/order')}>돌아가기</div>
-              <div>직원호출</div>
+              <div
+                onClick={() => {
+                  openModal({
+                    component: (
+                      <div className=" w-96 h-32 border-2 rounded-md border-white flex justify-center items-center">
+                        <span className=" font-bold text-lg text-white text-center">
+                          직원 호출이 완료되었습니다.
+                          <br />
+                          잠시만 기다려주세요.
+                        </span>
+                      </div>
+                    ),
+                  });
+                  setTimeout(() => {
+                    closeModal();
+                  }, 2000);
+                }}
+              >
+                직원호출
+              </div>
             </S.SuccessButtonBox>
           </S.BlackCoverSuccessMessageBox>
         </S.BlackCover>

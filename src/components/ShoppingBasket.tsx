@@ -56,8 +56,6 @@ const ShoppingBasket = () => {
     },
   );
 
-  const navigate = useNavigate();
-
   const { mutate: reset_cart } = useMutation(
     async () => {
       return await instance.delete('api/cart/delete');

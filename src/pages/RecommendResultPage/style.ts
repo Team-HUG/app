@@ -48,6 +48,7 @@ export const ResultButtonBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 100px;
 
   div {
     width: 12rem;
@@ -62,11 +63,6 @@ export const ResultButtonBoxContainer = styled.div`
     align-items: center;
 
     &:nth-of-type(1) {
-      color: #ffffff;
-      background-color: #fb4f00;
-    }
-
-    &:nth-of-type(2) {
       color: #191919;
       background-color: #ffffff;
     }
