@@ -11,6 +11,7 @@ export interface MenusTypes {
   foodName: string;
   imageUrl: string;
   price: string;
+  isEvent: boolean;
 }
 
 const Menu = () => {

@@ -96,14 +96,14 @@ export const SuccessButtonBox = styled.div`
   transform: translate(-50%, -50%);
 
   div {
-    width: 12rem;
+    width: 12.5rem;
     height: 5rem;
     margin-right: 20px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 600;
     cursor: pointer;
 
@@ -122,7 +122,7 @@ export const SuccessButtonBox = styled.div`
 export const CardGameContainer = styled.div``;
 
 export const CardGameTitleBox = styled.div`
-  margin-top: 3.8rem;
+  padding-top: 3.8rem;
   margin-left: 8rem;
   h1 {
     font-size: 2.8rem;
