@@ -5,7 +5,6 @@ import Prepare from './pages/Prepare';
 import AdminOrderList from './pages/AdminOrderList';
 import AdminGameList from './pages/AdminGameList';
 import FindWrongPicture from './pages/FindWrongPicture';
-import styled from 'styled-components';
 import Main from './pages/Main';
 import { ToastContainer, toast } from 'react-toastify';
 import Modal from './components/common/modal';
@@ -17,7 +16,7 @@ const App = () => {
       <StyledToastify autoClose={1000} position={toast.POSITION.TOP_RIGHT} theme="colored" />
       <Modal />
       <Routes>
-        <Route path="/" element={<div />} />
+        <Route path="/" element={<Main />} />
         <Route path="/order" element={<OrderPage />} />
         <Route path="/card-game" element={<CardGamePage />} />
         <Route path="/admin/order-list" element={<AdminOrderList />} />
