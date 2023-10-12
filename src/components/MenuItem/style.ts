@@ -29,6 +29,6 @@ export const ViewImgBox = styled.div<{ img_url: string }>`
   background-size: contain;
   width: 15rem;
   height: 10rem;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 8px 5px 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 `;

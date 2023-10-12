@@ -82,7 +82,7 @@ export const BlackCoverSuccessMessageBox = styled.div`
 
     &:nth-of-type(2) {
       top: 50%;
-      font-size: 2.5rem;
+      font-size: 2.4rem;
     }
   }
 `;
@@ -96,14 +96,14 @@ export const SuccessButtonBox = styled.div`
   transform: translate(-50%, -50%);
 
   div {
-    width: 12rem;
+    width: 12.5rem;
     height: 5rem;
     margin-right: 20px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 600;
     cursor: pointer;
 

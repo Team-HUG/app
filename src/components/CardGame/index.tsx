@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { cardData } from '../../assets/db/cardData';
 import * as S from './style';
 
 const CardGame = () => {
@@ -10,6 +11,7 @@ const CardGame = () => {
   const [notifyCount, setNotifyCount] = useState<number>(1);
   const [isGGwang, setIsGGwang] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
+  const [copyCards, setCopyCards] = useState<{ id: number; img: string; isAnswer: boolean }[]>(cardData);
 
   const navigate = useNavigate();
 
@@ -45,6 +47,10 @@ const CardGame = () => {
       }, 1000);
     }
   }, [notifyCount, beginning]);
+
+  useEffect(() => {
+    setCopyCards((prev) => prev.sort(() => Math.random() - 0.5));
+  }, []);
 
   return (
     <S.CardGameContainer>
@@ -102,69 +108,24 @@ const CardGame = () => {
         <h1>
           카드를 선택해서 <span>에이스를</span> 찾으세요!
         </h1>
-        <span>섞여있는 카드 속 두꺼비를 찾아내세요!</span>
+        <span>뒤집혀 있는 카드 중 두꺼비를 찾아내세요!</span>
       </S.CardGameTitleBox>
       <S.CardsBox>
-        {isGGwang || isSuccess ? (
-          <img src="/GGwangCard.png" alt="사진" />
-        ) : (
+        {copyCards.map((card) => (
           <img
-            src="/BackJinroCard.png"
-            alt="사진"
+            key={card.id}
+            src={isGGwang || isSuccess ? card.img : '/BackJinroCard.png'}
+            alt="카드"
             onClick={() => {
-              if (notifyCount === 0) {
-                setIsGGwang(true);
+              if (!isGGwang || !isSuccess) {
                 setNotifyCount(1);
                 setStartCount(10);
+                if (card.isAnswer && notifyCount === 0) setIsSuccess(true);
+                else if (!card.isAnswer && notifyCount === 0) setIsGGwang(true);
               }
             }}
           />
-        )}
-        {isGGwang || isSuccess ? (
-          <img src="/GGwangCard.png" alt="사진" />
-        ) : (
-          <img
-            src="/BackJinroCard.png"
-            alt="사진"
-            onClick={() => {
-              if (notifyCount === 0) {
-                setIsGGwang(true);
-                setNotifyCount(1);
-                setStartCount(10);
-              }
-            }}
-          />
-        )}
-        {isGGwang || isSuccess ? (
-          <img src="/GGwangCard.png" alt="사진" />
-        ) : (
-          <img
-            src="/BackJinroCard.png"
-            alt="사진"
-            onClick={() => {
-              if (notifyCount === 0) {
-                setIsGGwang(true);
-                setNotifyCount(1);
-                setStartCount(10);
-              }
-            }}
-          />
-        )}
-        {isGGwang || isSuccess ? (
-          <img src="/SuccessJinro.png" alt="사진" />
-        ) : (
-          <img
-            src="/BackJinroCard.png"
-            alt="사진"
-            onClick={() => {
-              if (notifyCount === 0) {
-                setIsSuccess(true);
-                setNotifyCount(1);
-                setStartCount(10);
-              }
-            }}
-          />
-        )}
+        ))}
       </S.CardsBox>
     </S.CardGameContainer>
   );
