@@ -10,7 +10,7 @@ export const RecommendLoadingContainer = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
-  margin-top: 12.5rem;
+  padding-top: 12.5rem;
 `;
 
 export const LoadingMessageBox = styled.div`
