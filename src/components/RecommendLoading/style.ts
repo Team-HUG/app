@@ -7,7 +7,7 @@ const spin = keyframes`
 
 export const RecommendLoadingContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   padding-top: 12.5rem;

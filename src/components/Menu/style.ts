@@ -24,6 +24,7 @@ export const MenuListContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 38px;
   margin-top: 1rem;
+  height: auto;
   overflow-y: auto;
 
   &::-webkit-scrollbar {

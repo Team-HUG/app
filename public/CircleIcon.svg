@@ -4,10 +4,10 @@
         <path
           d="M55.5469 20C35.9149 20 20 34.5507 20 52.5C20 70.4493 35.9149 85 55.5469 85C75.1789 85 91.0938 70.4493 91.0938 52.5C91.0938 34.5507 75.1789 20 55.5469 20Z"
           stroke="#FF2E2E"
-          stroke-width="10"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          shape-rendering="crispEdges"
+          strokeWidth="10"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          shapeRendering="crispEdges"
         />
       </g>
       <defs>
@@ -18,9 +18,9 @@
           width="111.094"
           height="105"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

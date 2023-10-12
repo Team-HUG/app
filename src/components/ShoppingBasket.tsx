@@ -4,6 +4,9 @@ import isOpenStore from '../store/isOpen.store';
 import shoppingStore from '../store/shopping.store';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { IncludeEvent } from '../atoms/atom';
 
 interface CartList {
   cartId: 0;
@@ -22,8 +25,11 @@ const ShoppingBasket = () => {
   const { data } = useQuery(['cartlist'], async () => {
     return await instance.get<CartList[]>(`api/cart/food/list`);
   });
+  const navigate = useNavigate();
 
   const queryClient = useQueryClient();
+
+  const setIncludeEvent = useSetRecoilState(IncludeEvent);
 
   const { mutate } = useMutation(
     async () => {
@@ -43,14 +49,32 @@ const ShoppingBasket = () => {
         });
         setTimeout(() => {
           closeModal();
+          navigate('/prepare');
         }, 2000);
         queryClient.invalidateQueries(['cartlist']);
       },
     },
   );
 
+  const navigate = useNavigate();
+
+  const { mutate: reset_cart } = useMutation(
+    async () => {
+      return await instance.delete('api/cart/delete');
+    },
+    {
+      onSuccess: () => {
+        setIsOpen(false);
+        navigate('/');
+        queryClient.invalidateQueries(['cartlist']);
+      },
+    },
+  );
+
   const onPaymentClick = async () => {
+    if (data?.data.length === 0) return toast.warning('음식을 담아주세요');
     mutate();
+    if (data?.data.some((item) => item.isEvent === true)) setIncludeEvent(true);
   };
 
   return (
@@ -86,7 +110,7 @@ const ShoppingBasket = () => {
         <div className="flex justify-between w-full gap-[5%]">
           <button
             className="w-[30%] h-[70px] text-[26px] font-semiBold text-white rounded-[10px] bg-gray2"
-            onClick={() => setIsOpen(false)}
+            onClick={() => reset_cart()}
           >
             초기화
           </button>

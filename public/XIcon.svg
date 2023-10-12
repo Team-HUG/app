@@ -3,16 +3,16 @@
     <path
       d="M74.246 68.1279L24.7485 22.709"
       stroke="#FF2E2E"
-      stroke-width="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
     <path
       d="M74.246 22.709L24.7485 68.1279"
       stroke="#FF2E2E"
-      stroke-width="10"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </g>
   <defs>
@@ -23,9 +23,9 @@
       width="128.995"
       height="120.838"
       filterUnits="userSpaceOnUse"
-      color-interpolation-filters="sRGB"
+      colorInterpolationFilters="sRGB"
     >
-      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+      <feFlood floodOpacity="0" result="BackgroundImageFix" />
       <feColorMatrix
         in="SourceAlpha"
         type="matrix"

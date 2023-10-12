@@ -35,7 +35,7 @@ export const AnotherButtonContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const CartButton = styled(OrderHeaderItemBox)`
+export const ToRecommendButton = styled(OrderHeaderItemBox)`
   background-color: #ffffff;
   color: #000000;
 `;

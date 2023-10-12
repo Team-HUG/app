@@ -3,7 +3,7 @@ import TableBar from '../components/atoms/TableBar';
 
 const AdminGameList = () => {
   return (
-    <div className=" w-full h-[100vh] flex flex-col">
+    <div className=" w-full h-[70vh] flex flex-col">
       <TableBar name="주문 목록" />
       <section className=" w-full h-full px-16 flex flex-col mt-10 gap-12">
         <span className=" font-extrabold text-3xl">주문 신청 목록</span>

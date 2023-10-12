@@ -7,9 +7,22 @@ import TableBar from '../../components/atoms/TableBar';
 import { useRecoilState } from 'recoil';
 import isOpenStore from '../../store/isOpen.store';
 import ArrowOpenIcon from '../../assets/ArrowOpenIcon';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const OrderPage = () => {
   const [isOpen, setIsOpen] = useRecoilState(isOpenStore);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      toast.info('메인으로 이동합니다');
+      navigate('/');
+    }, 300000);
+
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
   return (
     <div className="w-full">
