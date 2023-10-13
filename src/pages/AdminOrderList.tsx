@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TableBar from '../components/atoms/TableBar';
 import { instance } from '../api';
+import { toast } from 'react-toastify';
 
 const AdminOrderList = () => {
   const [안녕얘들아, 반가워ㅎㅎ] = useState<any>();
@@ -15,7 +16,7 @@ const AdminOrderList = () => {
 
   const complete = async (id: number) => {
     반가워ㅎㅎ(안녕얘들아.filter((x: any) => x.id !== id));
-    await instance.patch(`/api/order/change/complete/${id}`);
+    await instance.patch(`/api/order/change/complete/${id}`).then(() => toast.success('주문이 완료되었습니다'));
   };
 
   return (
@@ -47,11 +48,7 @@ const AdminOrderList = () => {
                 {vnvvnv.responseDtoList.map((d: any) => (
                   <div className=" flex flex-col gap-2">
                     <div className=" flex items-center gap-6 w-full h-32 bg-white py-4 shadow-md bg-opacity-10 px-6">
-                      {d.foodName === '진로' ? (
-                        <img src={d.imageUrl} alt="food" className="ml-12 mr-16 w-fit h-[100%]" />
-                      ) : (
-                        <img src={d.imageUrl} alt="food" className=" w-fit h-[100%]" />
-                      )}
+                      <img src={d.imageUrl} alt="food" className=" w-fit h-[100%]" />
                       <div className=" flex flex-col">
                         <span className=" font-bold text-2xl">{d.foodName}</span>
                         <span className=" font-medium text-[gray] text-xl">
