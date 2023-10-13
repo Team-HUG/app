@@ -49,7 +49,7 @@ const RecommendResultPage = () => {
             ))}
           </S.ResultBoxContainer>
           <S.ResultButtonBoxContainer>
-            <div className="cursor-pointer" onClick={() => navigate('/order')}>
+            <div className="fixed right-20 bottom-16 z-1 cursor-pointer" onClick={() => navigate('/order')}>
               돌아가기
             </div>
           </S.ResultButtonBoxContainer>

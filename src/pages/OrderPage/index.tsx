@@ -10,6 +10,7 @@ import ArrowOpenIcon from '../../assets/ArrowOpenIcon';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import OutsideClickHandler from 'react-outside-click-handler';
 
 const OrderPage = () => {
   const [isOpen, setIsOpen] = useRecoilState(isOpenStore);
@@ -46,7 +47,9 @@ const OrderPage = () => {
             >
               <ArrowOpenIcon />
             </div>
-            <ShoppingBasket />
+            <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
+              <ShoppingBasket />
+            </OutsideClickHandler>
           </div>
         )}
       </S.OrderPageContainer>
