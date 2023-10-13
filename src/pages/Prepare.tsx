@@ -8,6 +8,7 @@ import TableBar from '../components/atoms/TableBar';
 const Prepare = () => {
   const navigate = useNavigate();
   const includeEvent = useRecoilValue(IncludeEvent);
+
   return (
     <div className=" w-full h-[100vh] flex flex-col">
       <section id="headline" className="flex flex-col">
@@ -20,7 +21,11 @@ const Prepare = () => {
         </div>
         <div className=" flex flex-col justify-center items-center gap-3">
           <span className=" font-extrabold text-4xl">조리 준비 중</span>
-          <span className=" font-medium text-2xl text-[#666]">게임을 통해 최고기록을 깨고 서비스를 받아가세요 !</span>
+          <span className=" font-medium text-2xl text-[#666]">
+            {includeEvent
+              ? '게임을 통해 최고기록을 깨고 서비스를 받아가세요 !'
+              : '이벤트 메뉴를 주문하면 게임을 통해 서비스를 받을 수 있어요 !'}
+          </span>
         </div>
         <div className=" flex gap-8">
           <button
