@@ -20,7 +20,7 @@ const AdminOrderList = () => {
   };
 
   return (
-    <div className=" w-full h-[100vh] flex flex-col">
+    <div className=" w-full min-h-[100vh] flex flex-col pb-20">
       <TableBar name="주문 목록" />
       <section className=" w-full h-full px-16 flex flex-col mt-10 gap-12">
         <span className=" font-extrabold text-3xl">주문 신청 목록</span>
