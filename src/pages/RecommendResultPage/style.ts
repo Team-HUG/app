@@ -5,7 +5,8 @@ export const ReocmmendResultPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 4rem 5rem;
+  margin: 0px 5rem 4rem 5rem;
+  padding-top: 4rem;
 `;
 
 export const RecommendResultMessageBox = styled.div`
@@ -47,7 +48,8 @@ export const ResultButtonBoxContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+  margin-top: 100px;
+
   div {
     width: 12rem;
     height: 4rem;
@@ -61,11 +63,6 @@ export const ResultButtonBoxContainer = styled.div`
     align-items: center;
 
     &:nth-of-type(1) {
-      color: #ffffff;
-      background-color: #fb4f00;
-    }
-
-    &:nth-of-type(2) {
       color: #191919;
       background-color: #ffffff;
     }

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import TableBar from '../components/atoms/TableBar';
 import { BlackCover, BlackCoverSuccessMessageBox, NotifyMessage, SuccessButtonBox } from '../components/CardGame/style';
 import { useNavigate } from 'react-router-dom';
+import useModal from '../hooks/useModal';
 
 const FindWrongPicture = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -117,6 +118,8 @@ const FindWrongPicture = () => {
 
   const isCorrect = Object.values(wrongPicture).reduce((sum: any, obj: number) => sum + obj, 0) === 0;
 
+  const { openModal, closeModal } = useModal();
+
   return (
     <>
       <TableBar name={isBeginning || time <= 0 || isCorrect ? `깜짝게임` : `${time}초`} />
@@ -139,7 +142,27 @@ const FindWrongPicture = () => {
             <h1>진로가 주는 서비스를 받아가세요!</h1>
             <SuccessButtonBox>
               <div onClick={() => navigate('/order')}>돌아가기</div>
-              <div>직원호출</div>
+              <div
+                onClick={() => {
+                  navigate('/prepare');
+                  openModal({
+                    component: (
+                      <div className=" w-96 h-32 border-2 rounded-md border-white flex justify-center items-center">
+                        <span className=" font-bold text-lg text-white text-center">
+                          직원 호출이 완료되었습니다.
+                          <br />
+                          잠시만 기다려주세요.
+                        </span>
+                      </div>
+                    ),
+                  });
+                  setTimeout(() => {
+                    closeModal();
+                  }, 2000);
+                }}
+              >
+                직원호출
+              </div>
             </SuccessButtonBox>
           </BlackCoverSuccessMessageBox>
         </BlackCover>

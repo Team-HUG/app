@@ -4,10 +4,20 @@ import { useRecoilValue } from 'recoil';
 import { RecommendData } from '../../atoms/atom';
 import TableBar from '../../components/atoms/TableBar';
 import * as S from './style';
+import useModal from '../../hooks/useModal';
+import MenuDetail from '../../components/MenuDetail';
+import ArrowOpenIcon from '../../assets/ArrowOpenIcon';
+import ShoppingBasket from '../../components/ShoppingBasket';
+import { useRecoilState } from 'recoil';
+import isOpenStore from '../../store/isOpen.store';
+import ArrowCloseIcon from '../../assets/ArrowCloseIcon';
+import { OrderPageContainer } from '../OrderPage/style';
 
 const RecommendResultPage = () => {
   const recommendData = useRecoilValue(RecommendData);
   const navigate = useNavigate();
+  const { openModal } = useModal();
+  const [isOpen, setIsOpen] = useRecoilState(isOpenStore);
 
   useEffect(() => {
     if (recommendData[0].price === 0) return navigate('/recommend');
@@ -26,7 +36,12 @@ const RecommendResultPage = () => {
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', width: '100%' }}>
           <S.ResultBoxContainer>
             {recommendData.map((recommend) => (
-              <S.ResultBox key={recommend.id}>
+              <S.ResultBox
+                onClick={() => {
+                  openModal({ component: <MenuDetail id={recommend.id} /> });
+                }}
+                key={recommend.id}
+              >
                 <S.ResultViewImgBox img_url={recommend.imageUrl} />
                 <span>{recommend.foodName}</span>
                 <span>{`${recommend.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ', ')} 원`}</span>
@@ -34,10 +49,30 @@ const RecommendResultPage = () => {
             ))}
           </S.ResultBoxContainer>
           <S.ResultButtonBoxContainer>
-            <div>장바구니</div>
-            <div onClick={() => navigate('/order')}>돌아가기</div>
+            <div className="cursor-pointer" onClick={() => navigate('/order')}>
+              돌아가기
+            </div>
           </S.ResultButtonBoxContainer>
         </div>
+        {!isOpen && (
+          <div
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-12 h-24 cursor-pointer rounded-s-xl bg-orange1 fixed right-0 top-1/2 flex justify-center items-center"
+          >
+            <ArrowCloseIcon />
+          </div>
+        )}
+        {isOpen && (
+          <div className=" fixed cursor-pointer flex top-0 right-0 items-center">
+            <div
+              onClick={() => setIsOpen(!isOpen)}
+              className=" w-12 h-24 cursor-pointer rounded-s-xl bg-orange1 right-0 top-1/2 flex justify-center items-center"
+            >
+              <ArrowOpenIcon />
+            </div>
+            <ShoppingBasket />
+          </div>
+        )}
       </S.ReocmmendResultPageContainer>
     </>
   );

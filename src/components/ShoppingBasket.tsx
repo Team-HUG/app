@@ -56,6 +56,19 @@ const ShoppingBasket = () => {
     },
   );
 
+  const { mutate: reset_cart } = useMutation(
+    async () => {
+      return await instance.delete('api/cart/delete');
+    },
+    {
+      onSuccess: () => {
+        setIsOpen(false);
+        navigate('/');
+        queryClient.invalidateQueries(['cartlist']);
+      },
+    },
+  );
+
   const onPaymentClick = async () => {
     if (data?.data.length === 0) return toast.warning('음식을 담아주세요');
     mutate();
@@ -95,7 +108,7 @@ const ShoppingBasket = () => {
         <div className="flex justify-between w-full gap-[5%]">
           <button
             className="w-[30%] h-[70px] text-[26px] font-semiBold text-white rounded-[10px] bg-gray2"
-            onClick={() => setIsOpen(false)}
+            onClick={() => reset_cart()}
           >
             초기화
           </button>
