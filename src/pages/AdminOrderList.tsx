@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import TableBar from '../components/atoms/TableBar';
 import { instance } from '../api';
+import classNames from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
 const AdminOrderList = () => {
   const [안녕얘들아, 반가워ㅎㅎ] = useState<any>();
   const [로딩다됐엉, 로딩바꾸깅] = useState(false);
+  const navigate = useNavigate();
+  const [a, b] = useState('주문 신청 목록');
   useEffect(() => {
     (async () => {
       const { data } = await instance.get('/api/order');
@@ -18,11 +22,34 @@ const AdminOrderList = () => {
     await instance.patch(`/api/order/change/complete/${id}`);
   };
 
+  useEffect(() => {
+    if (a === '이벤트 클리어 목록') navigate('/admin/game-list');
+  }, [a]);
+
   return (
     <div className=" w-full h-[100vh] flex flex-col">
       <TableBar name="주문 목록" />
       <section className=" w-full h-full px-16 flex flex-col mt-10 gap-12">
-        <span className=" font-extrabold text-3xl">주문 신청 목록</span>
+        <div className="flex gap-4">
+          <span
+            style={{
+              color: a === '주문 신청 목록' ? 'black' : 'gray',
+            }}
+            className={classNames(' font-extrabold text-3xl')}
+            onClick={() => navigate('/admin/game-list')}
+          >
+            주문 신청 목록
+          </span>
+          <span
+            style={{
+              color: a === '이벤트 클리어 목록' ? 'black' : 'gray',
+            }}
+            className=" font-extrabold text-3xl"
+            onClick={() => b('이벤트 클리어 목록')}
+          >
+            이벤트 클리어 목록
+          </span>
+        </div>
         {로딩다됐엉 && (
           <>
             {안녕얘들아.map((vnvvnv: any) => (
