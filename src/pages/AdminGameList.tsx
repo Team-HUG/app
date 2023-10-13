@@ -19,7 +19,7 @@ const AdminGameList = () => {
             style={{
               color: a === '주문 신청 목록' ? 'black' : 'gray',
             }}
-            className={' font-extrabold text-3xl'}
+            className={' font-extrabold text-3xl cursor-pointer'}
             onClick={() => navigate('/admin/order-list')}
           >
             주문 신청 목록
@@ -28,7 +28,7 @@ const AdminGameList = () => {
             style={{
               color: a === '이벤트 클리어 목록' ? 'black' : 'gray',
             }}
-            className=" font-extrabold text-3xl"
+            className=" font-extrabold text-3xl cursor-pointer"
             onClick={() => b('이벤트 클리어 목록')}
           >
             이벤트 클리어 목록
