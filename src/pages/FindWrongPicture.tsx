@@ -167,7 +167,6 @@ const FindWrongPicture = () => {
           </BlackCoverSuccessMessageBox>
         </BlackCover>
       )}
-
       {!isCorrect && time <= 0 && (
         <BlackCover>
           <BlackCoverSuccessMessageBox>
@@ -184,7 +183,6 @@ const FindWrongPicture = () => {
           <h1>시작</h1>
         </NotifyMessage>
       )}
-
       <div className="px-20 h-full pt-[30px]">
         <header>
           <div className="text-[40px] text-black font-bold noselect">
@@ -202,7 +200,7 @@ const FindWrongPicture = () => {
           </div>
         </header>
       </div>
-      <div className="flex justify-between gap-5 h-full mx-auto">
+      <div className="flex justify-between gap-5 h-full mx-auto mt-24">
         <canvas
           width={373}
           height={520}

@@ -72,11 +72,15 @@ const ShoppingBasket = () => {
   const onPaymentClick = async () => {
     if (data?.data.length === 0) return toast.warning('음식을 담아주세요');
     mutate();
-    if (data?.data.some((item) => item.isEvent === true)) setIncludeEvent(true);
+    if (data?.data.some((item) => item.isEvent === true)) {
+      setIncludeEvent(true);
+    } else {
+      setIncludeEvent(false);
+    }
   };
 
   return (
-    <div className="flex flex-col bg-white items-center justify-between w-[500px] mx-auto h-screen rounded-[10px] shadow-[0_4px_9px_0px_rgba(0,0,0,0.15)] px-10">
+    <div className="flex flex-col bg-white items-center justify-between w-[500px] mx-auto h-screen rounded-[10px] shadow-[0_4px_9px_0px_rgba(0,0,0,0.15)] px-10 pb-10">
       <header className="text-[35px] pt-10 font-semiBold text-gray4">장바구니</header>
       <div className="flex flex-col gap-[35px] w-full h-[60%] overflow-scroll py-5">
         {data?.data.map((order) => (
